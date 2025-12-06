@@ -12,7 +12,7 @@ import csv
 
 def get_column(file_name, column_index):
     """
-    Read the given CSV file and return a list of integers from the given column.
+    Read the given CSV file and return a list of integers from one column.
 
     Parameters
     ----------
@@ -38,10 +38,10 @@ def get_column(file_name, column_index):
     try:
         with open(file_name, "r", encoding="utf-8") as f:
             reader = csv.reader(f)
-            _header = next(reader, None)  # Skip header if present
+            # Skip header row if present
+            next(reader, None)
 
             for row in reader:
-                # Skip rows too short to contain the column
                 if len(row) <= column_index:
                     continue
 
@@ -80,11 +80,12 @@ def median(values):
         raise ValueError("median() requires at least one value.")
 
     sorted_vals = sorted(values)
-    n = len(sorted_vals)
-    mid = n // 2
+    n_vals = len(sorted_vals)
+    mid = n_vals // 2
 
-    if n % 2 == 1:
+    if n_vals % 2 == 1:
         return sorted_vals[mid]
+
     return (sorted_vals[mid - 1] + sorted_vals[mid]) / 2
 
 
@@ -95,7 +96,7 @@ def std(values):
     if len(values) == 0:
         raise ValueError("std() requires at least one value.")
 
-    m = mean(values)
-    squared_diffs = [(x - m) ** 2 for x in values]
+    m_val = mean(values)
+    squared_diffs = [(x - m_val) ** 2 for x in values]
     variance = sum(squared_diffs) / len(squared_diffs)
     return variance ** 0.5
