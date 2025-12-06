@@ -54,3 +54,18 @@ These tests verify:
 - correct handling of a missing CSV file  
 - correct handling of a country with no matching rows  
 - correct non-zero exit codes for error cases
+
+
+## Assignment 5: Continuous Integration (v4.0)
+
+This version adds a complete continuous integration workflow using GitHub Actions.
+The CI pipeline is defined in `.github/workflows/ci.yml` and performs:
+
+- unit tests using pytest  
+- functional tests using the shell scripts in `tests/functional/`
+- style checking using flake8  
+- automatic execution on every branch push and pull request to `main`
+
+This ensures code quality, testing, and style compliance are checked automatically.
+
+
