@@ -3,7 +3,6 @@ AI Usage Policy:
 This file contains portions of code where AI assistance was used.
 AI assistance was limited to:
 - Improving code style and readability
-- Adding documentation (docstrings and comments)
 - Ensuring compliance with best practices
 All core logic, decisions, and verification were performed by the student.
 """
@@ -64,4 +63,39 @@ def get_column(file_name, column_index):
     return values
 
 
+def mean(values):
+    """
+    Return the arithmetic mean of a list of numbers.
+    """
+    if len(values) == 0:
+        raise ValueError("mean() requires at least one value.")
+    return sum(values) / len(values)
 
+
+def median(values):
+    """
+    Return the median of a list of numbers.
+    """
+    if len(values) == 0:
+        raise ValueError("median() requires at least one value.")
+
+    sorted_vals = sorted(values)
+    n = len(sorted_vals)
+    mid = n // 2
+
+    if n % 2 == 1:
+        return sorted_vals[mid]
+    return (sorted_vals[mid - 1] + sorted_vals[mid]) / 2
+
+
+def std(values):
+    """
+    Return the population standard deviation of a list of numbers.
+    """
+    if len(values) == 0:
+        raise ValueError("std() requires at least one value.")
+
+    m = mean(values)
+    squared_diffs = [(x - m) ** 2 for x in values]
+    variance = sum(squared_diffs) / len(squared_diffs)
+    return variance ** 0.5
